@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class UserManagingService {
   users : any
-  baseURL : string = 'http://localhost:8000/api'
+  baseURL : string = 'https://usm-backend.onrender.com/api'
   constructor(private  http : HttpClient , private authService : AuthService) { }
 
   getUsers() {

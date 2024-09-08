@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  baseURL: string = 'http://localhost:8000/api';
+  baseURL: string = 'https://usm-backend.onrender.com/api';
   tokenKey: string = 'authToken';
   isLoggedIn : boolean = false;
   userData : any = null ;
