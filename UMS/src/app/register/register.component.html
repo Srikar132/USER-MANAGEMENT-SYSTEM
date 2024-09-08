@@ -1,0 +1,221 @@
+<div class="main w-full flex items-center justify-center py-12 bg-gray-100">
+  <div [formGroup]="registerForm" class="bg-white p-8 w-full max-w-2xl rounded-lg shadow-lg border space-y-6">
+
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-gray-800">Register</h2>
+      <p class="text-gray-600">Please fill out the form below to create an account.</p>
+    </div>
+
+    <!-- Username -->
+    <div>
+      <label for="username" class="block text-gray-700 font-medium">Username</label>
+      <input
+        id="username"
+        pInputText
+        formControlName="username"
+        placeholder="Enter your username"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="text-red-500">
+        Username is required
+      </small>
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label for="email" class="block text-gray-700 font-medium">Email</label>
+      <input
+        id="email"
+        type="email"
+        pInputText
+        formControlName="email"
+        placeholder="Enter your email"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-red-500">
+        Please enter a valid email
+      </small>
+    </div>
+
+    <!-- First Name -->
+    <div>
+      <label for="first_name" class="block text-gray-700 font-medium">First Name</label>
+      <input
+        id="first_name"
+        pInputText
+        formControlName="first_name"
+        placeholder="Enter your first name"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('first_name')?.invalid && registerForm.get('first_name')?.touched" class="text-red-500">
+        First name is required
+      </small>
+    </div>
+
+    <!-- Last Name -->
+    <div>
+      <label for="last_name" class="block text-gray-700 font-medium">Last Name</label>
+      <input
+        id="last_name"
+        pInputText
+        formControlName="last_name"
+        placeholder="Enter your last name"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('last_name')?.invalid && registerForm.get('last_name')?.touched" class="text-red-500">
+        Last name is required
+      </small>
+    </div>
+
+    <!-- Phone Number -->
+    <div>
+      <label for="phone_number" class="block text-gray-700 font-medium">Phone Number</label>
+      <input
+        id="phone_number"
+        pInputText
+        formControlName="phone_number"
+        placeholder="Enter your phone number"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('phone_number')?.invalid && registerForm.get('phone_number')?.touched" class="text-red-500">
+        Phone number is required
+      </small>
+    </div>
+
+    <!-- Gender -->
+    <div>
+      <label for="gender" class="block text-gray-700 font-medium">Gender</label>
+      <select
+        id="gender"
+        formControlName="gender"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="">Select gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <small *ngIf="registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched" class="text-red-500">
+        Gender is required
+      </small>
+    </div>
+
+    <!-- Job Title -->
+    <div>
+      <label for="job_title" class="block text-gray-700 font-medium">Job Title</label>
+      <input
+        id="job_title"
+        pInputText
+        formControlName="job_title"
+        placeholder="Enter your job title"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('job_title')?.invalid && registerForm.get('job_title')?.touched" class="text-red-500">
+        Job title is required
+      </small>
+    </div>
+
+    <!-- Company -->
+    <div>
+      <label for="company" class="block text-gray-700 font-medium">Company</label>
+      <input
+        id="company"
+        pInputText
+        formControlName="company"
+        placeholder="Enter your company"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('company')?.invalid && registerForm.get('company')?.touched" class="text-red-500">
+        Company is required
+      </small>
+    </div>
+
+    <!-- Skills -->
+    <div>
+      <label for="skills" class="block text-gray-700 font-medium">Skills (comma separated)</label>
+      <input
+        id="skills"
+        pInputText
+        formControlName="skills"
+        placeholder="Enter your skills"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('skills')?.invalid && registerForm.get('skills')?.touched" class="text-red-500">
+        Skills are required
+      </small>
+    </div>
+
+    <!-- Bio -->
+    <div>
+      <label for="bio" class="block text-gray-700 font-medium">Bio</label>
+      <textarea
+        id="bio"
+        formControlName="bio"
+        placeholder="Tell us about yourself"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      ></textarea>
+      <small *ngIf="registerForm.get('bio')?.invalid && registerForm.get('bio')?.touched" class="text-red-500">
+        Bio is required
+      </small>
+    </div>
+
+    <!-- Website -->
+    <div>
+      <label for="website" class="block text-gray-700 font-medium">Website</label>
+      <input
+        id="website"
+        pInputText
+        formControlName="website"
+        placeholder="provide your website link (Optional)"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('website')?.invalid && registerForm.get('website')?.touched" class="text-red-500">
+        Website is required
+      </small>
+    </div>
+
+    <!-- Social Links -->
+    <div>
+      <label for="social_links" class="block text-gray-700 font-medium">Social Links (comma separated)</label>
+      <input
+        id="social_links"
+        pInputText
+        formControlName="social_links"
+        placeholder="Enter social links"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('social_links')?.invalid && registerForm.get('social_links')?.touched" class="text-red-500">
+        Social links are required
+      </small>
+    </div>
+
+    <div>
+      <label for="password" class="block text-gray-700 font-medium">Password</label>
+      <input
+        id="password"
+        type="password"
+        pInputText
+        formControlName="password"
+        placeholder="set password"
+        class="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-red-500">
+        Password must be at least 6 characters
+      </small>
+    </div>
+
+    <!-- Submit Button -->
+    <div>
+      <button
+        pButton
+        type="submit"
+        label="Register"
+        (click)="onSubmit()"
+        [disabled]="registerForm.invalid"
+        class="w-full  bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition duration-300 disabled:opacity-50"
+      >
+
+      </button>
+    </div>
+  </div>
+</div>

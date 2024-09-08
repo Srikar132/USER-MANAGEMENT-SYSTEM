@@ -1,0 +1,22 @@
+@media (max-width: 640px) {
+  /* Hide profile, email, and join date columns */
+  td:nth-child(1),  /* Profile column */
+  td:nth-child(3),  /* Email column */
+  td:nth-child(4),  /* Join date column */
+  th:nth-child(1),
+  th:nth-child(3),
+  th:nth-child(4) {
+    display: none;
+  }
+
+  /* Ensure that the table still looks good */
+  td:nth-child(2),
+  td:nth-child(5) {
+    font-size: smaller;
+    display: table-cell;
+  }
+}
+
+i {
+  margin-right: 3px;
+}

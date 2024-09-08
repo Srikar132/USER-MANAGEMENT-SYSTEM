@@ -1,0 +1,95 @@
+<!--
+<div class="main h-screen w-full p-3">
+
+</div> -->
+
+
+<div class="main w-full min-h-screen flex flex-col bg-gray-100">
+
+  <!-- header section -->
+  <section class="header  bg-black  flex justify-between flex-col pt-[80px] pl-3 pr-3" >
+    <h1 class="text-white text-4xl p-5 uppercase  font-extrabold ">Settings</h1>
+    <div class=" text-white flex gap-2 px-3  ">
+      <span   [ngClass]="{' text-white rounded-none border-b border-b-[2px] border-b-white ' : section == 'users' }" class="cursor-pointer text-gray-400  tracking-wider hover:bg-gray-800 rounded-[10px] px-3 py-1" (click)="setSection('users')">users</span>
+      <span   [ngClass]="{' text-white rounded-none border-b border-b-[2px] border-b-white ' : section != 'users' }" class="cursor-pointer text-gray-400  tracking-wider hover:bg-gray-800 rounded-[10px] px-3 py-1" (click)="setSection('profile')">STATS</span>
+    </div>
+  </section>
+
+  <!-- Main section -->
+  <section [ngSwitch]="section" class="edit py-1  section flex-[0.8] border border-white  p-3">
+
+    <!-- user details -->
+    <div *ngSwitchCase="'users'" class="border px-1 sm:px-6 w-full mb-20">
+
+      <section class="w-full flex-[0.34] py-3">
+        <div class="container mx-auto flex items-center justify-between border-b border-gray-500 py-3">
+          <div class="">
+            <h1 class="font-bold sm:text-4xl ">Admin users</h1>
+            <span class=" opacity-60 text-[0.5em] sm:text-[1em]">manage your users and their permisions here.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- user -details  -->
+
+      <table class="w-full  text-center border-separate border-spacing-0 rounded-lg shadow-lg">
+        <thead class="bg-[#F5F6F8] text-black font-semibold">
+          <tr class="">
+            <th class="py-3 px-4 border-b"> <i class="pi pi-user"></i>Username</th>
+            <th class="py-3 px-4 border-b"> <i class="pi pi-envelope"></i> Email</th>
+            <th class="py-3 px-4 border-b"> <i class="pi pi-user  "></i> gender</th>
+            <th class="py-3 px-4 border-b"> <i class="pi pi-calendar"></i> join date</th>
+            <th class="py-3 px-4 border-b"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of users; let i = index; let even = even;" [ngClass]="{'bg-gray-100': even, 'bg-white': !even}" class="transition duration-200 ease-in-out hover:bg-gray-50">
+            <td class="py-2 px-4 border-b">{{item.basic_info.username}}</td>
+            <td class="py-2 px-4 border-b">{{item.basic_info.email}}</td>
+            <td class="py-2 px-4 border-b"> {{item.basic_info.gender}} </td>
+            <td class="py-2 px-4 border-b"> {{getDate(item.security.account_created_at)}} </td>
+            <td class="py-2 px-4 text-center relative">
+              <button (click)="setIndex(i)" class="text-xl px-3 py-1 text-black font-semibold transition duration-200 ease-in-out">
+                ⋮
+              </button>
+              <div [ngClass]="{ 'block' : index === i, 'hidden' : index !== i }" class="absolute text-left bottom-100 right-20 w-[200px] bg-white border rounded-lg p-1 shadow-md">
+                <ul class="">
+                  <li [routerLink]="['/dashboard/profile',item?._id]" class="py-2 px-4 hover:bg-gray-100 cursor-pointer"> <i class="pi pi-eye"></i> View Profile</li>
+                  <li (click)="setDeleteController(i)" class="py-2 px-4 hover:bg-gray-100 cursor-pointer"><i class="pi pi-trash"></i>  Delete</li>
+                  <li [routerLink]="['/editform',item?._id]" routerLinkActive="router-link-active"  class="py-2 px-4 hover:bg-gray-100 cursor-pointer"> <i class="pi pi-pencil"></i> Edit</li>
+                  <!-- <li  class="py-2 px-4 hover:bg-gray-100 pointer-events-none"> <i class="pi pi-key"></i> Permissions</li> -->
+                </ul>
+              </div>
+            </td>
+
+          </tr>
+          <tr *ngIf="users?.length === 0" class="bg-white">
+            <td class="py-3 px-4 border-b" colspan="5" class="text-center">No data available</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div *ngSwitchCase="'profile'" class="w-full h-full flex items-center justify-center">NOT STATS YET</div>
+  </section>
+</div>
+
+<div *ngIf="isLoading" class="loading-anim fixed inset-0 bg-black/30 flex items-center justify-center z-[1000]">
+  <span class="w-[50px] h-[50px] border-4 border-t-4 border-gray-300 rounded-full animate-spin border-t-blue-500"></span>
+</div>
+<div *ngIf="deleteController.show" class="delete-container top-0 bottom-0 left-0 roght-0 fixed inset-0 bg-black/30 flex items-center justify-center z-[1000]">
+  <div class="bg-white p-3 flex flex-col gap-3 rounded-lg dhadow-lg">
+    <span>Are you sure , want to delete user</span>
+    <div class="flex flex-row-reverse gap-3">
+      <button (click)="onDeleteUser()" class="px-2 py-1 rounded-lg bg-red-400 text-white hover:bg-red-500">delete</button>
+      <button (click)="cancelDelete()" class="px-2 py-1 rounded-lg border border-black hover:bg-gray-200">cancel</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

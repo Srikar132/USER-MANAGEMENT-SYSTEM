@@ -1,0 +1,65 @@
+<div class="main h-screen w-full flex items-center justify-center bg-gray-100">
+  <div *ngIf="!loggedIn" [formGroup]="loginForm" class="bg-white p-6 w-[400px] rounded-[10px] shadow-lg border space-y-6">
+    <!-- Title -->
+    <div class="text-center">
+      <h2 class="text-2xl font-semibold text-gray-800">Login</h2>
+    </div>
+
+    <!-- Username Field -->
+    <div>
+      <label for="email" class="block text-gray-600 font-medium">email</label>
+      <input
+        id="email"
+        pInputText
+        formControlName="email"
+        placeholder="Enter your email"
+        class="w-full mt-2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500">
+        email is required
+      </small>
+    </div>
+
+    <!-- Password Field -->
+    <div>
+      <label for="password" class="block text-gray-600 font-medium">Password</label>
+      <input
+        id="password"
+        type="password"
+        pInputText
+        formControlName="password"
+        placeholder="Enter your password"
+        class="w-full mt-2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <small *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500">
+        Password must be at least 6 characters
+      </small>
+    </div>
+
+    <!-- Submit Button -->
+    <div>
+      <button
+        pButton
+        type="submit"
+        label="Login"
+        (click)="onSubmit()"
+        [disabled]="loginForm.invalid"
+        class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300 disabled:opacity-50"
+      >
+
+      </button>
+    </div>
+
+    <!-- Forgot Password Link -->
+    <div class="text-center">
+      Don't have an account? <a [routerLink]="['/register']" class="text-blue-900 hover-underline">Register here</a>
+    </div>
+  </div>
+  <div *ngIf="loggedIn" class="bg-white flex flex-col  w-[300px] shadow-lg px-3 py-2">
+    <span class="font-bold ">you are logged into UMS (user management system) .</span>
+    <span>Explore it.</span>
+    <div class="flex flex-row-reverse">
+      <button (click)="goToRoute()" pButton class="px-3  bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300 disabled:opacity-50">Ok.</button>
+    </div>
+  </div>
+</div>
